@@ -21,7 +21,7 @@
 
 Name:      python-%{pkgname}
 Version:   0.4.0
-Release:   test0%{?dist}
+Release:   test232%{?dist}
 Summary:   JSON-RPC v2.0 client library for Python
 License:   ASL 2.0
 URL:       http://github.com/tcalmant/jsonrpclib/
@@ -50,15 +50,18 @@ BuildRequires:  python%{python3_pkgversion}
 %description -n python%{python3_pkgversion}-%{pkgname} %_description
 %endif
 
+
 %prep
 %setup -q -n %{pkgname}-%{version}
 
+
 %build
-%py2_build
+%{py2_build}
 
 %if %{with python3}
-%py3_build
+%{py3_build}
 %endif
+
 
 %install
 [ %buildroot = "/" ] || rm -rf %buildroot
@@ -69,8 +72,10 @@ BuildRequires:  python%{python3_pkgversion}
 %py3_install
 %endif
 
+
 %clean
 rm -rf %{buildroot}
+
 
 %files -n python2-%{pkgname}
 %license LICENSE
@@ -84,6 +89,6 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Mon Sep 30 2019 Croc Cloud Engineering <devel@croc.ru> - 0.4.0-0
+* Mon Sep 30 2019 Croc Cloud Engineering - 0.4.0-1
 - Build for py2/py3 for Croc cloud
 
